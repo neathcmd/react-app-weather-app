@@ -157,9 +157,7 @@ const WeatherOverview = () => {
     return (
       <div className="text-center p-8 bg-red-50 rounded-lg border border-red-200">
         <div className="text-red-600 text-lg mb-2">Error: {error}</div>
-        <p className="text-gray-700">
-          Please check your API key or try a different city.
-        </p>
+        <p className="text-gray-700"></p>
         <div className="mt-4">
           <input
             type="text"
@@ -221,30 +219,51 @@ const WeatherOverview = () => {
     .slice(0, 5);
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
-      <div className="mb-6 flex justify-between items-center ">
-        <h1 className="text-3xl font-bold text-black">Weather Overview</h1>
-        <div className="flex space-x-2 ">
-          <div className="relative">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      {/* Header Section */}
+      <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold text-black">
+          Weather Overview
+        </h1>
+        <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+          {/* Search Input and Button */}
+          <div className="relative w-full sm:w-auto group">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-gray-400 group-hover:text-orange-500 transition-colors duration-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
             <input
               type="text"
               placeholder="Search city..."
-              defaultValue={city}
-              className="px-4 py-2 border rounded-l w-64 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="pl-10 pr-4 py-2 w-full sm:w-64 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300 text-black text-sm sm:text-base placeholder-gray-400 hover:border-orange-400"
               onKeyPress={handleCityChange}
             />
             <button
-              className="bg-orange-500 text-white px-4 py-2 rounded-r hover:bg-orange-600 transition-colors"
-              onClick={() =>
-                document.querySelector("input").value &&
-                setCity(document.querySelector("input").value)
-              }
+              className="absolute right-0 top-0 h-full px-3 sm:px-4 bg-orange-500 text-white rounded-r-lg hover:bg-orange-600 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:ring-offset-1"
+              onClick={() => {
+                const inputValue = document.querySelector("input").value;
+                if (inputValue) setCity(inputValue);
+              }}
             >
               Search
             </button>
           </div>
+
+          {/* Unit Toggle Button */}
           <button
-            className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded transition-colors text-black cursor-pointer"
+            className="w-full sm:w-auto px-3 sm:px-4 py-2 bg-gray-100 text-gray-800 rounded-lg shadow-sm hover:bg-gray-200 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-1 text-sm sm:text-base"
             onClick={toggleUnits}
           >
             {units === "metric" ? "°C" : "°F"}
@@ -252,32 +271,37 @@ const WeatherOverview = () => {
         </div>
       </div>
 
+      {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Weather Card */}
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl p-6 shadow-xl">
+        <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl p-4 sm:p-6 shadow-xl">
           <div className="flex justify-between items-center mb-4">
             <div>
-              <h2 className="font-bold text-2xl">
+              <h2 className="font-bold text-xl sm:text-2xl">
                 {cityName}, {countryCode}
               </h2>
-              <p className="text-gray-300">{formatDateTime()}</p>
+              <p className="text-gray-300 text-sm sm:text-base">
+                {formatDateTime()}
+              </p>
             </div>
             <img
               src={getWeatherIcon(weatherIcon)}
               alt={weatherDescription}
-              className="w-16 h-16"
+              className="w-12 h-12 sm:w-16 sm:h-16"
             />
           </div>
 
-          <div className="my-6 text-center">
+          <div className="my-4 sm:my-6 text-center">
             <div className="flex items-center justify-center">
-              <span className="text-7xl font-bold">
+              <span className="text-5xl sm:text-7xl font-bold">
                 {temperature}
                 {tempUnit}
               </span>
             </div>
-            <p className="text-xl capitalize mt-2">{weatherDescription}</p>
-            <p className="text-gray-300 mt-1">
+            <p className="text-lg sm:text-xl capitalize mt-2">
+              {weatherDescription}
+            </p>
+            <p className="text-gray-300 mt-1 text-sm sm:text-base">
               Feels like {feelsLike}
               {tempUnit}
             </p>
@@ -288,7 +312,7 @@ const WeatherOverview = () => {
               <div className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2 text-orange-400"
+                  className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-orange-400"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -301,8 +325,8 @@ const WeatherOverview = () => {
                   />
                 </svg>
                 <div>
-                  <p className="text-gray-400 text-sm">High</p>
-                  <p>
+                  <p className="text-gray-400 text-xs sm:text-sm">High</p>
+                  <p className="text-sm sm:text-base">
                     {highTemp}
                     {tempUnit}
                   </p>
@@ -311,7 +335,7 @@ const WeatherOverview = () => {
               <div className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2 text-blue-400"
+                  className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-blue-400"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -324,8 +348,8 @@ const WeatherOverview = () => {
                   />
                 </svg>
                 <div>
-                  <p className="text-gray-400 text-sm">Low</p>
-                  <p>
+                  <p className="text-gray-400 text-xs sm:text-sm">Low</p>
+                  <p className="text-sm sm:text-base">
                     {lowTemp}
                     {tempUnit}
                   </p>
@@ -339,7 +363,7 @@ const WeatherOverview = () => {
               <div className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2 text-blue-400"
+                  className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-blue-400"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -352,14 +376,14 @@ const WeatherOverview = () => {
                   />
                 </svg>
                 <div>
-                  <p className="text-gray-400 text-sm">Sunrise</p>
-                  <p>{sunrise}</p>
+                  <p className="text-gray-400 text-xs sm:text-sm">Sunrise</p>
+                  <p className="text-sm sm:text-base">{sunrise}</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2 text-orange-400"
+                  className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-orange-400"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -373,35 +397,36 @@ const WeatherOverview = () => {
                   <circle cx="12" cy="7" r="4" />
                 </svg>
                 <div>
-                  <p className="text-gray-400 text-sm">Sunset</p>
-                  <p>{sunset}</p>
+                  <p className="text-gray-400 text-xs sm:text-sm">Sunset</p>
+                  <p className="text-sm sm:text-base">{sunset}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Forecast Cards */}
+        {/* Forecast and Details Section */}
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-            <h3 className="font-semibold text-lg text-gray-800 mb-4">
+          {/* 5-Day Forecast */}
+          <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
+            <h3 className="font-semibold text-base sm:text-lg text-gray-800 mb-4">
               5-Day Forecast
             </h3>
-            <div className="grid grid-cols-5 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
               {dailyForecasts.map((day, index) => (
                 <div
                   key={index}
                   className="text-center p-2 rounded-lg hover:bg-gray-50 transition-colors"
                 >
-                  <p className="font-medium text-gray-700">
+                  <p className="font-medium text-gray-700 text-sm sm:text-base">
                     {formatDay(day.dt)}
                   </p>
                   <img
                     src={getWeatherIcon(day.weather[0].icon)}
                     alt={day.weather[0].description}
-                    className="w-12 h-12 mx-auto"
+                    className="w-10 h-10 sm:w-12 sm:h-12 mx-auto"
                   />
-                  <p className="font-semibold">
+                  <p className="font-semibold text-sm sm:text-base">
                     {Math.round(day.main.temp)}
                     {tempUnit}
                   </p>
@@ -414,12 +439,12 @@ const WeatherOverview = () => {
           </div>
 
           {/* Weather Details Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-orange-100 p-3 rounded-full mr-4">
+              <div className="bg-orange-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-orange-500"
+                  className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -433,16 +458,18 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-sm">Air Quality</p>
-                <p className="font-semibold text-gray-800">{airQualityText}</p>
+                <p className="text-gray-500 text-xs sm:text-sm">Air Quality</p>
+                <p className="font-semibold text-gray-800 text-sm sm:text-base">
+                  {airQualityText}
+                </p>
               </div>
             </div>
 
             <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-blue-100 p-3 rounded-full mr-4">
+              <div className="bg-blue-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-blue-500"
+                  className="h-5 w-5 sm:h-6 sm:w-6 text-blue-500"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -456,16 +483,18 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-sm">Humidity</p>
-                <p className="font-semibold text-gray-800">{humidity}%</p>
+                <p className="text-gray-500 text-xs sm:text-sm">Humidity</p>
+                <p className="font-semibold text-gray-800 text-sm sm:text-base">
+                  {humidity}%
+                </p>
               </div>
             </div>
 
             <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-green-100 p-3 rounded-full mr-4">
+              <div className="bg-green-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-green-500"
+                  className="h-5 w-5 sm:h-6 sm:w-6 text-green-500"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -479,18 +508,18 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-sm">Wind</p>
-                <p className="font-semibold text-gray-800">
+                <p className="text-gray-500 text-xs sm:text-sm">Wind</p>
+                <p className="font-semibold text-gray-800 text-sm sm:text-base">
                   {windSpeed} {windUnit}
                 </p>
               </div>
             </div>
 
             <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-purple-100 p-3 rounded-full mr-4">
+              <div className="bg-purple-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-purple-500"
+                  className="h-5 w-5 sm:h-6 sm:w-6 text-purple-500"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -504,16 +533,18 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-sm">Pressure</p>
-                <p className="font-semibold text-gray-800">{pressure} hPa</p>
+                <p className="text-gray-500 text-xs sm:text-sm">Pressure</p>
+                <p className="font-semibold text-gray-800 text-sm sm:text-base">
+                  {pressure} hPa
+                </p>
               </div>
             </div>
 
             <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-yellow-100 p-3 rounded-full mr-4">
+              <div className="bg-yellow-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-yellow-500"
+                  className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-500"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -533,18 +564,18 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-sm">Visibility</p>
-                <p className="font-semibold text-gray-800">
+                <p className="text-gray-500 text-xs sm:text-sm">Visibility</p>
+                <p className="font-semibold text-gray-800 text-sm sm:text-base">
                   {visibility.toFixed(1)} {visibilityUnit}
                 </p>
               </div>
             </div>
 
             <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-red-100 p-3 rounded-full mr-4">
+              <div className="bg-red-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-red-500"
+                  className="h-5 w-5 sm:h-6 sm:w-6 text-red-500"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -558,8 +589,8 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-sm">Feels Like</p>
-                <p className="font-semibold text-gray-800">
+                <p className="text-gray-500 text-xs sm:text-sm">Feels Like</p>
+                <p className="font-semibold text-gray-800 text-sm sm:text-base">
                   {feelsLike}
                   {tempUnit}
                 </p>

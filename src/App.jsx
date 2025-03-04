@@ -7,9 +7,8 @@ function App() {
   return (
     <div>
       <NavBar />
-      <main className="pt-20">
-        <Home />
-      </main>
+
+      <Home />
     </div>
   );
 }
