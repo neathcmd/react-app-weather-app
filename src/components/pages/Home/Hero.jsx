@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 const Hero = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const API_KEY = "b93932bbe1df60eb75e5596059faf22e"; // Replace with your API key
+  const API_KEY = "b93932bbe1df60eb75e5596059faf22e";
   const CITY = "Phnom Penh";
+  // const UPDATE_INTERVAL = 1000;
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -67,61 +68,63 @@ const Hero = () => {
           "url('https://www.shutterstock.com/image-photo/dramatic-black-smoke-fire-danger-600nw-1927135535.jpg')",
       }}
     >
-      <div className=" flex flex-col md:flex-row items-center justify-around items-center px-[5%] py-12 w-full h-screen">
+      <div className="flex flex-col md:flex-row items-center justify-around px-4 sm:px-6 md:px-[5%] py-6 sm:py-8 md:py-10 w-full min-h-[100vh]">
         {/* Hero Content (Left Side) */}
-        <div className="max-w-full md:max-w-[50%] text-white text-start mb-8 md:mb-0">
-          <p className="text-lg mb-4 tracking-wider opacity-80">
+        <div className="w-full md:w-1/2 text-white text-start mb-6 md:mb-0">
+          <p className="text-sm sm:text-base md:text-lg mb-2 sm:mb-3 tracking-wider opacity-80">
             ---Weather and forecast
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-8 drop-shadow-lg">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-4 sm:mb-6 drop-shadow-lg">
             WEATHER IS A GREAT METAPHOR FOR LIFE
           </h1>
-          <button className="bg-orange-500 text-white font-bold py-3 px-6 rounded-full hover:bg-orange-600 transition-colors cursor-pointer">
+          <button className="bg-orange-500 text-white font-bold py-2 px-4 sm:py-2.5 sm:px-5 rounded-full hover:bg-orange-600 transition-colors cursor-pointer text-sm sm:text-base">
             MORE INFO
           </button>
         </div>
 
         {/* Weather Card (Right Side) */}
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl p-6 sm:p-8 shadow-xl w-full max-w-lg">
+        <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl p-4 sm:p-6 shadow-xl w-full max-w-sm sm:max-w-md">
           {loading ? (
             <p>Loading weather...</p>
           ) : weatherData ? (
             <>
               {/* Location and Weather Icon */}
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex justify-between items-center mb-4 sm:mb-5">
                 <div>
-                  <h2 className="font-bold text-2xl sm:text-3xl">Phnom Penh</h2>
-                  <p className="text-gray-300 text-base sm:text-lg">
-                    Today, 28 Feb
+                  <h2 className="font-bold text-lg sm:text-xl md:text-2xl">
+                    Phnom Penh
+                  </h2>
+                  <p className="text-gray-300 text-sm sm:text-base">
+                    {formatDate()}
                   </p>
                 </div>
-                <div className="text-5xl sm:text-6xl">
+                <div className="text-3xl sm:text-4xl md:text-5xl">
                   {getWeatherIcon(weatherData.weather[0].main)}
                 </div>
               </div>
 
               {/* Temperature and Weather Condition */}
-              <div className="my-6 sm:my-8 text-center">
+              <div className="my-4 sm:my-5 text-center">
                 <div className="flex items-center justify-center">
-                  <span className="text-7xl sm:text-8xl font-bold">
+                  <span className="text-4xl sm:text-5xl md:text-6xl font-bold">
                     {Math.round(weatherData.main.temp)}°
                   </span>
                 </div>
-                <p className="text-xl sm:text-2xl capitalize mt-4">
+                <p className="text-base sm:text-lg md:text-xl capitalize mt-2 sm:mt-3">
                   {weatherData.weather[0].description}
                 </p>
-                <p className="text-gray-300 mt-2 text-base sm:text-lg">
+                <p className="text-gray-300 mt-1 sm:mt-2 text-sm sm:text-base">
                   Feels like {Math.round(weatherData.main.feels_like)}°
                 </p>
               </div>
 
               {/* Weather Details (High and Low Temperature) */}
-              <div className="border-t border-gray-700 pt-6">
-                <div className="grid grid-cols-2 gap-6">
+              <div className="border-t border-gray-700 pt-4 sm:pt-5">
+                <div className="grid grid-cols-2 gap-4 sm:gap-5">
                   <div className="flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 sm:h-7 sm:w-7 mr-3 text-orange-400"
+                      className="h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3 text-orange-400"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -134,8 +137,10 @@ const Hero = () => {
                       />
                     </svg>
                     <div>
-                      <p className="text-gray-400 text-sm sm:text-base">High</p>
-                      <p className="text-lg sm:text-xl">
+                      <p className="text-gray-400 text-xs sm:text-sm md:text-base">
+                        High
+                      </p>
+                      <p className="text-base sm:text-lg md:text-xl">
                         {Math.round(weatherData.main.temp_max)}°
                       </p>
                     </div>
@@ -143,7 +148,7 @@ const Hero = () => {
                   <div className="flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 sm:h-7 sm:w-7 mr-3 text-blue-400"
+                      className="h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3 text-blue-400"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -156,8 +161,10 @@ const Hero = () => {
                       />
                     </svg>
                     <div>
-                      <p className="text-gray-400 text-sm sm:text-base">Low</p>
-                      <p className="text-lg sm:text-xl">
+                      <p className="text-gray-400 text-xs sm:text-sm md:text-base">
+                        Low
+                      </p>
+                      <p className="text-base sm:text-lg md:text-xl">
                         {Math.round(weatherData.main.temp_min)}°
                       </p>
                     </div>
@@ -166,12 +173,12 @@ const Hero = () => {
               </div>
 
               {/* Sunrise and Sunset */}
-              <div className="mt-6 pt-6 border-t border-gray-700">
-                <div className="grid grid-cols-2 gap-6">
+              <div className="mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-gray-700">
+                <div className="grid grid-cols-2 gap-4 sm:gap-5">
                   <div className="flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 sm:h-7 sm:w-7 mr-3 text-blue-400"
+                      className="h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3 text-blue-400"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -184,10 +191,10 @@ const Hero = () => {
                       />
                     </svg>
                     <div>
-                      <p className="text-gray-400 text-sm sm:text-base">
+                      <p className="text-gray-400 text-xs sm:text-sm md:text-base">
                         Sunrise
                       </p>
-                      <p className="text-lg sm:text-xl">
+                      <p className="text-base sm:text-lg md:text-xl">
                         {formatTime(weatherData.sys.sunrise)}
                       </p>
                     </div>
@@ -195,7 +202,7 @@ const Hero = () => {
                   <div className="flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 sm:h-7 sm:w-7 mr-3 text-orange-400"
+                      className="h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3 text-orange-400"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -209,10 +216,10 @@ const Hero = () => {
                       <circle cx="12" cy="7" r="4" />
                     </svg>
                     <div>
-                      <p className="text-gray-400 text-sm sm:text-base">
+                      <p className="text-gray-400 text-xs sm:text-sm md:text-base">
                         Sunset
                       </p>
-                      <p className="text-lg sm:text-xl">
+                      <p className="text-base sm:text-lg md:text-xl">
                         {formatTime(weatherData.sys.sunset)}
                       </p>
                     </div>

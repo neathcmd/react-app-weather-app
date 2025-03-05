@@ -5,8 +5,8 @@ const WeatherOverview = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [city, setCity] = useState("Phnom Penh"); // Default city, can be changed by user input
-  const [units, setUnits] = useState("metric"); // Default units (metric or imperial)
+  const [city, setCity] = useState("Phnom Penh");
+  const [units, setUnits] = useState("metric");
 
   // OpenWeatherMap API key
   const API_KEY = "b93932bbe1df60eb75e5596059faf22e";
@@ -166,7 +166,7 @@ const WeatherOverview = () => {
             onKeyPress={handleCityChange}
           />
           <button
-            className="bg-orange-500 text-white px-4 py-2 rounded-r hover:bg-orange-600 transition-colors"
+            className="bg-orange-500 text-white px-4 py-2 rounded-r hover:bg-orange-600 transition-colors sursor-pointer"
             onClick={() =>
               document.querySelector("input").value &&
               setCity(document.querySelector("input").value)
@@ -251,7 +251,7 @@ const WeatherOverview = () => {
               onKeyPress={handleCityChange}
             />
             <button
-              className="absolute right-0 top-0 h-full px-3 sm:px-4 bg-orange-500 text-white rounded-r-lg hover:bg-orange-600 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:ring-offset-1"
+              className="absolute right-0 top-0 h-full px-3 sm:px-4 bg-orange-500 text-white rounded-r-lg hover:bg-orange-600 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:ring-offset-1 cursor-pointer"
               onClick={() => {
                 const inputValue = document.querySelector("input").value;
                 if (inputValue) setCity(inputValue);
