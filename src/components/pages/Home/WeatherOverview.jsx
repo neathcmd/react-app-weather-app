@@ -223,7 +223,7 @@ const WeatherOverview = () => {
       {/* Header Section */}
       <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <h1 className="text-2xl sm:text-3xl font-bold text-black">
-          Weather Overview
+          Weather Dashboard
         </h1>
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
           {/* Search Input and Button */}
@@ -287,7 +287,7 @@ const WeatherOverview = () => {
             <img
               src={getWeatherIcon(weatherIcon)}
               alt={weatherDescription}
-              className="w-12 h-12 sm:w-16 sm:h-16"
+              className="w-12 h-12 sm:w-16 sm:h-16 "
             />
           </div>
 
@@ -408,15 +408,16 @@ const WeatherOverview = () => {
         {/* Forecast and Details Section */}
         <div className="lg:col-span-2">
           {/* 5-Day Forecast */}
-          <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6">
+          <div className="bg-[#DBD0D0] rounded-xl shadow-lg p-4 sm:p-6 mb-6">
             <h3 className="font-semibold text-base sm:text-lg text-gray-800 mb-4">
               5-Day Forecast
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4 ">
               {dailyForecasts.map((day, index) => (
                 <div
                   key={index}
-                  className="text-center p-2 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="text-center p-2 rounded-lg text-white transition-all duration-300 
+                           hover:bg-gradient-to-br from-gray-900 to-gray-800"
                 >
                   <p className="font-medium text-gray-700 text-sm sm:text-base">
                     {formatDay(day.dt)}
@@ -440,7 +441,7 @@ const WeatherOverview = () => {
 
           {/* Weather Details Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
+            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
               <div className="bg-orange-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -465,7 +466,7 @@ const WeatherOverview = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
+            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
               <div className="bg-blue-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -490,7 +491,7 @@ const WeatherOverview = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
+            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
               <div className="bg-green-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -515,7 +516,7 @@ const WeatherOverview = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
+            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
               <div className="bg-purple-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -540,7 +541,7 @@ const WeatherOverview = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
+            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
               <div className="bg-yellow-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -571,7 +572,7 @@ const WeatherOverview = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-md p-4 flex items-center">
+            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
               <div className="bg-red-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
