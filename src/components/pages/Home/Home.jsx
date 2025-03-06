@@ -2,7 +2,7 @@
 import React from "react";
 import Hero from "./Hero"; // Adjust path as needed
 import AboutSection from "./About"; // Adjust path as needed
-// import CambodiaForecast from "./CambodiaForecast"; // Adjust path as needed
+import CambodiaForecast from "./CambodiaForecast";
 import WeatherOverview from "./WeatherOverview"; // Adjust path as needed
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
         <div>
           <Hero />
           <AboutSection />
-          {/* <CambodiaForecast /> */}
+          <CambodiaForecast />
           <WeatherOverview />
         </div>
       </main>
