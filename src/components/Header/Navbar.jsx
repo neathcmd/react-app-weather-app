@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from "react";
 
+// Define your navigation links as a separate array object
+const navigationLinks = [
+  { name: "Home", path: "/" },
+  { name: "About Us", path: "#about-us" },
+  { name: "Gallery", path: "/gallery" },
+  { name: "Blog", path: "/blog" },
+  { name: "FAQ", path: "/faq" },
+  { name: "Contact", path: "/contact" },
+];
+
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,8 +29,9 @@ const NavBar = () => {
   }, []);
 
   // Close mobile menu when clicking a link
-  const handleLinkClick = () => {
+  const handleLinkClick = (e, path) => {
     setIsMenuOpen(false);
+    // Add any other navigation logic here
   };
 
   return (
@@ -34,25 +45,13 @@ const NavBar = () => {
       <nav className="py-4">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           {/* Logo and Brand Name */}
-          <div className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 mr-2 text-[#EE7C27] transition-transform duration-300 ease-in-out hover:scale-110"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-              />
-            </svg>
+          <div className="flex items-center gap-4">
+            <a href="/">
+              <span className="text-white">⚡</span>
+            </a>
             <a
               href="/"
-              className="font-bold text-lg tracking-wide hover:text-[#EE7C27] transition-colors duration-300 ease-in-out"
+              className="font-bold text-lg tracking-wide hover:text-black transition-colors duration-300 ease-in-out"
             >
               Weather Cambodia
             </a>
@@ -60,17 +59,15 @@ const NavBar = () => {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex space-x-6 lg:space-x-8">
-            {["Home", "About Us", "Gallery", "Blog", "FAQ", "Contact"].map(
-              (link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="relative text-sm lg:text-base font-medium hover:text-[#EE7C27] transition-colors duration-300 ease-in-out after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-[#EE7C27] after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  {link}
-                </a>
-              )
-            )}
+            {navigationLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.path}
+                className="relative text-sm lg:text-base font-medium hover:text-black transition-colors duration-300 ease-in-out after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
+              >
+                {link.name}
+              </a>
+            ))}
           </div>
 
           {/* Mobile Menu Toggle Button */}
@@ -113,7 +110,7 @@ const NavBar = () => {
 
         {/* Mobile Navigation Links (Slides in from the right with fade) */}
         <div
-          className={`fixed top-0 right-0 h-full w-64 bg-[#EE7C27]  backdrop-blur-md transform transition-all duration-500 ease-in-out z-50 ${
+          className={`fixed top-0 right-0 h-full w-64 bg-[#EE7C27] backdrop-blur-md transform transition-all duration-500 ease-in-out z-50 ${
             isMenuOpen
               ? "translate-x-0 opacity-100"
               : "translate-x-full opacity-0"
@@ -143,28 +140,37 @@ const NavBar = () => {
 
           {/* Menu Content */}
           <div className="mt-16 p-6 flex flex-col space-y-4">
-            {["Home", "About Us", "Gallery", "Blog", "FAQ", "Contact"].map(
-              (link, index) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
-                  onClick={handleLinkClick}
-                  className={`block px-4 py-3 text-lg font-medium transition-all duration-300 ease-in-out transform hover:translate-x-2 hover:text-[#EE7C27] ${
-                    isMenuOpen
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-4"
-                  }`}
-                  style={{
-                    transitionDelay: `${index * 100}ms`,
-                  }}
-                >
-                  {link}
-                </a>
-              )
-            )}
+            <div className="flex items-center gap-4 justify-center flex-col">
+              <a href="/">
+                <span className="text-white">⚡</span>
+              </a>
+              <a
+                href="/"
+                className="font-bold text-lg tracking-wide hover:text-black transition-colors duration-300 ease-in-out"
+              >
+                Weather Cambodia
+              </a>
+            </div>
+            {navigationLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.path}
+                onClick={(e) => handleLinkClick(e, link.path)}
+                className={`block px-4 py-3 text-lg font-medium transition-all duration-100 ease-in-out transform hover:translate-x-2 hover:text-black ${
+                  isMenuOpen
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                }`}
+                style={{
+                  transitionDelay: `${index * 100}ms`,
+                }}
+              >
+                {link.name}
+              </a>
+            ))}
             <a
               href="#get-info"
-              onClick={handleLinkClick}
+              onClick={(e) => handleLinkClick(e, "#get-info")}
               className="block px-4 py-3 bg-white text-[#EE7C27] border border-transparent hover:border-white hover:text-white hover:bg-[#EE7C27] transition-all duration-300 ease-in-out transform hover:scale-105 rounded-2xl font-medium shadow-md hover:shadow-lg"
             >
               Get Info
