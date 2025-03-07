@@ -1,9 +1,9 @@
 // src/components/pages/Home/Home.jsx
 import React from "react";
-import Hero from "./Hero"; // Adjust path as needed
-import AboutSection from "./About"; // Adjust path as needed
+import Hero from "./Hero";
+import AboutSection from "./About";
 import CambodiaForecast from "./CambodiaForecast";
-import WeatherOverview from "./WeatherOverview"; // Adjust path as needed
+import WeatherOverview from "./WeatherOverview";
 
 const Home = () => {
   return (

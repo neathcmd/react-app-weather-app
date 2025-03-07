@@ -70,7 +70,10 @@ const Hero = () => {
     >
       <div className="flex flex-col md:flex-row items-center justify-around px-4 sm:px-6 md:px-[5%] py-6 sm:py-8 md:py-10 w-full min-h-[100vh]">
         {/* Hero Content (Left Side) */}
-        <div className="w-full md:w-1/2 text-white text-start mb-6 md:mb-0">
+        <div
+          data-aos="fade-right"
+          className="w-full md:w-1/2 text-white text-start mb-6 md:mb-0"
+        >
           <p className="text-sm sm:text-base md:text-lg mb-2 sm:mb-3 tracking-wider opacity-80">
             ---Weather and forecast
           </p>

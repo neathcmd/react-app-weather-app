@@ -19,8 +19,8 @@ const CambodiaForecast = () => {
       temperature: -999,
     },
     {
-      name: "Kampong Province",
-      image: `/src/assets/Kampong-Province.jpg`,
+      name: "KohKong Province",
+      image: `/src/assets/KohKong-Province.jpg`,
       lat: 11.9924, // Approximate latitude for Kampong Cham (representing Kampong Province)
       lon: 105.4645, // Approximate longitude for Kampong Cham
       weatherIcon: "🌥️",
@@ -35,16 +35,17 @@ const CambodiaForecast = () => {
       temperature: -999,
     },
     {
-      name: "Kampong Thom Province",
-      image: `/src/assets/Kampong-Thom-Province.jpg`,
-      lat: 12.7111, // Approximate latitude for Kampong Thom
-      lon: 104.8887, // Approximate longitude for Kampong Thom
+      name: "Kampongcham Province",
+      image: `/src/assets/Kompongchhang-Province.jpg`,
+      lat: 11.9924, // Approximate latitude for Kampong Cham
+      lon: 105.4645, // Approximate longitude for Kampong Cham
       weatherIcon: "🌥️",
       temperature: -999,
     },
+
     {
-      name: "Pursat Province",
-      image: `/src/assets/Pursat-Province.jpg`,
+      name: "PreahVihear Province ",
+      image: `/src/assets/PreahVihear-Province .jpg`,
       lat: 12.5388, // Approximate latitude for Pursat
       lon: 103.9192, // Approximate longitude for Pursat
       weatherIcon: "🌥️",
@@ -52,7 +53,7 @@ const CambodiaForecast = () => {
     },
     {
       name: "Mondulkiri Province",
-      image: `/src/assets/Mondulkiri-Province.jpg`,
+      image: `/src/assets/Modulkiri-Province.jpg`,
       lat: 12.4555, // Approximate latitude for Mondulkiri
       lon: 107.1878, // Approximate longitude for Mondulkiri
       weatherIcon: "🌥️",
@@ -75,10 +76,10 @@ const CambodiaForecast = () => {
       temperature: -999,
     },
     {
-      name: "Kampongcham Province",
-      image: `/src/assets/Kampongcham-Province.jpg`,
-      lat: 11.9924, // Approximate latitude for Kampong Cham
-      lon: 105.4645, // Approximate longitude for Kampong Cham
+      name: "Kampong Thom Province",
+      image: `/src/assets/KompongThom-Province.jpg`,
+      lat: 12.7111, // Approximate latitude for Kampong Thom
+      lon: 104.8887, // Approximate longitude for Kampong Thom
       weatherIcon: "🌥️",
       temperature: -999,
     },
