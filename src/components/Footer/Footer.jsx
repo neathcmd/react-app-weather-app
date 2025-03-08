@@ -1,11 +1,12 @@
-// Footer.js
 import React, { useState } from "react";
 
 // Define navigation links as an array
 const navLinks = [
   { text: "Home", href: "/", className: "hover:text-orange-500" },
-  { text: "About Us", href: "#", className: "hover:text-orange-500" },
+  { text: "About Us", href: "#about", className: "hover:text-orange-500" },
+  { text: "Gallery", href: "#", className: "hover:text-orange-500" },
   { text: "Blog", href: "#", className: "hover:text-orange-500" },
+  { text: "FAQ", href: "#", className: "hover:text-orange-500" },
   { text: "Contact Us", href: "#", className: "hover:text-orange-500" },
 ];
 
@@ -67,13 +68,11 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white mt-10 py-10 text-center flex-shrink-0">
-      <div className="container px-4 flex items-center justify-center flex-col my-2">
+    <footer className="bg-black text-white mt-10 py-6 sm:py-8 md:py-10 text-center flex-shrink-0">
+      <div className="px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8">
         {/* Title */}
         <h2
-          className={`text-xl font-semibold flex items-center justify-center gap-2 cursor-pointer ${
-            !isNavVisible ? "text-orange-500" : ""
-          }`}
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold flex items-center justify-center gap-2 cursor-pointer transition-colors duration-300 hover:text-orange-500"
           onClick={handleTitleClick}
         >
           <span className="text-orange-500">⚡</span> Weather Cambodia
@@ -81,7 +80,7 @@ const Footer = () => {
 
         {/* Description */}
         <p
-          className={`text-gray-400 mt-2 max-w-md ${
+          className={`text-gray-400 max-w-md text-sm sm:text-base md:text-lg ${
             isNavVisible ? "" : "hidden"
           }`}
         >
@@ -90,14 +89,20 @@ const Footer = () => {
         </p>
 
         {/* Social Media Links */}
-        <ul className="flex justify-center items-center mt-6" id="social-list">
+        <ul
+          className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6"
+          id="social-list"
+        >
           {socialLinks.map((link, index) => (
-            <li key={index} className="relative mx-2.5 group list-none">
+            <li
+              key={index}
+              className="relative mx-1 sm:mx-2 md:mx-3 group list-none"
+            >
               <a
                 href={link.href}
                 aria-label={link.ariaLabel}
                 data-social={link.social}
-                className="relative overflow-hidden flex justify-center items-center w-[50px] h-[50px] rounded-full text-gray-600 bg-white transition-all duration-300 ease-in-out hover:text-white hover:shadow-[3px_2px_45px_0px_rgba(0,0,0,0.12)]"
+                className="relative overflow-hidden flex justify-center items-center w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] md:w-[50px] md:h-[50px] rounded-full text-gray-600 bg-white transition-all duration-300 ease-in-out hover:text-white hover:shadow-[3px_2px_45px_0px_rgba(0,0,0,0.12)]"
               >
                 <div
                   className="filled absolute bottom-0 left-0 w-full h-0 transition-all duration-300 ease-in-out group-hover:h-full"
@@ -108,14 +113,14 @@ const Footer = () => {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  className="relative z-10 w-[30px] h-[30px]"
+                  className="relative z-10 w-[20px] h-[20px] sm:w-[25px] sm:h-[25px] md:w-[30px] md:h-[30px]"
                   viewBox="0 0 16 16"
                 >
                   <path d={link.svgPath}></path>
                 </svg>
               </a>
               <div
-                className="absolute -top-7 left-1/2 -translate-x-1/2 text-white py-1.5 px-2.5 rounded-md opacity-0 invisible text-sm transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:visible group-hover:-top-12"
+                className="absolute -top-6 sm:-top-7 md:-top-8 left-1/2 -translate-x-1/2 text-white py-1 px-2 sm:py-1.5 sm:px-2.5 md:py-2 md:px-3 rounded-md opacity-0 invisible text-xs sm:text-sm md:text-base transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:visible group-hover:-top-10 sm:group-hover:-top-12 md:group-hover:-top-14"
                 style={{ background: link.bgColor }}
               >
                 {link.label}
@@ -126,7 +131,7 @@ const Footer = () => {
 
         {/* Navigation */}
         <nav
-          className={`flex justify-center gap-6 mt-6 text-lg ${
+          className={`flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 text-sm sm:text-base md:text-lg ${
             isNavVisible ? "" : "hidden"
           }`}
         >
@@ -138,7 +143,7 @@ const Footer = () => {
         </nav>
 
         {/* Footer Bottom */}
-        <div className="mt-8 text-gray-500 border-t-2 border-gray-800 pt-4">
+        <div className="w-full mt-4 sm:mt-6 md:mt-8 text-gray-500 border-t-2 border-gray-800 pt-2 sm:pt-3 md:pt-4 text-xs sm:text-sm md:text-base text-center">
           © 2025 - All Rights Reserved | Created By Phoungvisal
         </div>
       </div>
