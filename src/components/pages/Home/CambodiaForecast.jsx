@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+// CambodiaForecast Component
 const CambodiaForecast = () => {
   const [provinces, setProvinces] = useState([
     {
@@ -42,7 +43,6 @@ const CambodiaForecast = () => {
       weatherIcon: "🌥️",
       temperature: -999,
     },
-
     {
       name: "PreahVihear Province ",
       image: `/src/assets/PreahVihear-Province .jpg`,
@@ -162,55 +162,54 @@ const CambodiaForecast = () => {
 
     const interval = setInterval(() => {
       updateWeatherData();
-    }, 30000);
+    }, 300000); // 5 minutes
 
     return () => clearInterval(interval);
   }, []);
 
-  // ProvinceCard component
+  // ProvinceCard Component
   const ProvinceCard = ({ province }) => {
     return (
-      <div className="bg-gray-100 rounded-lg p-4 flex flex-col items-center shadow-sm hover:shadow-md transition-shadow w-[240px] h-[190px]">
-        <div className="w-12 h-12 flex items-center justify-center mb-2">
+      <div className="bg-gray-100 rounded-lg p-3 sm:p-4 md:p-5 flex flex-col items-center justify-between shadow-sm hover:shadow-md transition-shadow duration-300 w-full max-w-[220px] sm:max-w-[240px] h-[180px] sm:h-[200px] md:h-[220px]">
+        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center mb-1 sm:mb-2 md:mb-3">
           <img
             src={province.image}
             alt={`${province.name} image`}
             className="w-full h-full object-cover rounded-full"
           />
         </div>
-        <div className="text-2xl mb-1">{province.weatherIcon || "🌥️"}</div>
-        <p className="text-sm font-medium text-gray-800 text-center break-words">
-          {province.name}
-        </p>
-        <p className="text-xs text-gray-600 mt-1">
-          {province.temperature === -999 ? "N/A" : `${province.temperature}°C`}
-        </p>
+        <div className="text-xl sm:text-2xl md:text-3xl mb-1 sm:mb-2 md:mb-3">
+          {province.weatherIcon || "🌥️"}
+        </div>
+        <div className="flex flex-col items-center flex-grow">
+          <p className="text-xs sm:text-sm md:text-base font-medium text-gray-800 text-center break-words line-clamp-2">
+            {province.name}
+          </p>
+          <p className="text-xs sm:text-sm md:text-base text-gray-600 mt-1">
+            {province.temperature === -999
+              ? "N/A"
+              : `${province.temperature}°C`}
+          </p>
+        </div>
       </div>
     );
   };
 
   return (
-    <section className="py-16 container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">
+    <section className="py-6 sm:py-8 md:py-12 lg:py-16 mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-10">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
           Cambodia Forecast
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout.
         </p>
       </div>
 
-      {/* First row of province cards */}
-      <div className="flex flex-row md:flex-nowrap flex-wrap justify-between gap-4 mb-4 max-w-5xl mx-auto">
-        {firstRowProvinces.map((province, index) => (
-          <ProvinceCard key={index} province={province} />
-        ))}
-      </div>
-
-      {/* Second row of province cards */}
-      <div className="flex flex-row md:flex-nowrap flex-wrap justify-between gap-4 max-w-5xl mx-auto">
-        {secondRowProvinces.map((province, index) => (
+      {/* Grid layout for province cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto cursor-pointer">
+        {provinces.map((province, index) => (
           <ProvinceCard key={index} province={province} />
         ))}
       </div>

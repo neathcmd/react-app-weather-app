@@ -51,7 +51,7 @@ const NavBar = () => {
             </a>
             <a
               href="/"
-              className="font-bold text-lg tracking-wide hover:text-black transition-colors duration-300 ease-in-out"
+              className="relative font-bold text-lg lg:text-base tracking-wide hover:text-black transition-colors duration-300 ease-in-out after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
             >
               Weather Cambodia
             </a>
@@ -72,7 +72,7 @@ const NavBar = () => {
 
           {/* Mobile Menu Toggle Button */}
           <button
-            className="md:hidden text-white focus:outline-none transition-transform duration-300 ease-in-out hover:scale-110"
+            className="md:hidden text-white focus:outline-none transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -118,7 +118,7 @@ const NavBar = () => {
         >
           {/* Close Button */}
           <button
-            className="absolute top-4 right-4 text-white focus:outline-none transition-transform duration-300 ease-in-out hover:scale-110"
+            className="absolute top-4 right-4 text-white focus:outline-none transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
             onClick={() => setIsMenuOpen(false)}
             aria-label="Close menu"
           >
@@ -146,7 +146,7 @@ const NavBar = () => {
               </a>
               <a
                 href="/"
-                className="font-bold text-lg tracking-wide hover:text-black transition-colors duration-300 ease-in-out"
+                className="relative font-bold text-lg lg:text-base tracking-wide hover:text-black transition-colors duration-300 ease-in-out after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
               >
                 Weather Cambodia
               </a>
@@ -156,7 +156,7 @@ const NavBar = () => {
                 key={index}
                 href={link.path}
                 onClick={(e) => handleLinkClick(e, link.path)}
-                className={`block px-4 py-3 text-lg font-medium transition-all duration-100 ease-in-out transform hover:translate-x-2 hover:text-black ${
+                className={`block px-4 py-3 text-lg transition-all relative lg:text-base font-medium transition-colors duration-300 ease-in-out after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full ${
                   isMenuOpen
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-4"
