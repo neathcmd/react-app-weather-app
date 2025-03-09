@@ -68,21 +68,24 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white mt-10 py-6 sm:py-8 md:py-10 text-center flex-shrink-0">
-      <div className="px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8">
+    <footer className="bg-black text-white mt-8 sm:mt-10 py-6 sm:py-8 md:py-10 lg:py-12 flex-shrink-0">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
         {/* Title */}
         <h2
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold flex items-center justify-center gap-2 cursor-pointer transition-colors duration-300 hover:text-orange-500"
+          className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold flex items-center justify-center gap-1 sm:gap-2 cursor-pointer transition-colors duration-300 hover:text-orange-500"
           onClick={handleTitleClick}
         >
-          <span className="text-orange-500">⚡</span> Weather Cambodia
+          <span className="text-orange-500 text-lg sm:text-xl md:text-2xl lg:text-3xl">
+            ⚡
+          </span>
+          Weather Cambodia
         </h2>
 
         {/* Description */}
         <p
-          className={`text-gray-400 max-w-md text-sm sm:text-base md:text-lg ${
+          className={`text-gray-400 max-w-xs sm:max-w-sm md:max-w-md text-xs sm:text-sm md:text-base lg:text-lg ${
             isNavVisible ? "" : "hidden"
-          }`}
+          } text-center`}
         >
           It is a long established fact that a reader will be distracted by the
           readable content of a page looking at its layout.
@@ -90,19 +93,16 @@ const Footer = () => {
 
         {/* Social Media Links */}
         <ul
-          className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6"
+          className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 lg:gap-5"
           id="social-list"
         >
           {socialLinks.map((link, index) => (
-            <li
-              key={index}
-              className="relative mx-1 sm:mx-2 md:mx-3 group list-none"
-            >
+            <li key={index} className="relative group list-none">
               <a
                 href={link.href}
                 aria-label={link.ariaLabel}
                 data-social={link.social}
-                className="relative overflow-hidden flex justify-center items-center w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] md:w-[50px] md:h-[50px] rounded-full text-gray-600 bg-white transition-all duration-300 ease-in-out hover:text-white hover:shadow-[3px_2px_45px_0px_rgba(0,0,0,0.12)]"
+                className="relative overflow-hidden flex justify-center items-center w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-full text-gray-600 bg-white transition-all duration-300 ease-in-out hover:text-white hover:shadow-[3px_2px_45px_0px_rgba(0,0,0,0.12)]"
               >
                 <div
                   className="filled absolute bottom-0 left-0 w-full h-0 transition-all duration-300 ease-in-out group-hover:h-full"
@@ -113,14 +113,14 @@ const Footer = () => {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  className="relative z-10 w-[20px] h-[20px] sm:w-[25px] sm:h-[25px] md:w-[30px] md:h-[30px]"
+                  className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7"
                   viewBox="0 0 16 16"
                 >
                   <path d={link.svgPath}></path>
                 </svg>
               </a>
               <div
-                className="absolute -top-6 sm:-top-7 md:-top-8 left-1/2 -translate-x-1/2 text-white py-1 px-2 sm:py-1.5 sm:px-2.5 md:py-2 md:px-3 rounded-md opacity-0 invisible text-xs sm:text-sm md:text-base transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:visible group-hover:-top-10 sm:group-hover:-top-12 md:group-hover:-top-14"
+                className="absolute -top-5 sm:-top-6 md:-top-7 lg:-top-8 left-1/2 -translate-x-1/2 text-white py-1 px-1.5 sm:py-1 sm:px-2 md:py-1.5 md:px-2.5 lg:py-2 lg:px-3 rounded-md opacity-0 invisible text-xs sm:text-xs md:text-sm lg:text-base transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:visible group-hover:-top-8 sm:group-hover:-top-10 md:group-hover:-top-12 lg:group-hover:-top-14"
                 style={{ background: link.bgColor }}
               >
                 {link.label}
@@ -131,19 +131,23 @@ const Footer = () => {
 
         {/* Navigation */}
         <nav
-          className={`flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 text-sm sm:text-base md:text-lg ${
+          className={`flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 lg:gap-5 text-xs sm:text-sm md:text-base lg:text-lg ${
             isNavVisible ? "" : "hidden"
           }`}
         >
           {navLinks.map((link, index) => (
-            <a key={index} href={link.href} className={link.className}>
+            <a
+              key={index}
+              href={link.href}
+              className={`${link.className} px-1 sm:px-2 py-1 hover:underline transition-colors duration-300`}
+            >
               {link.text}
             </a>
           ))}
         </nav>
 
         {/* Footer Bottom */}
-        <div className="w-full mt-4 sm:mt-6 md:mt-8 text-gray-500 border-t-2 border-gray-800 pt-2 sm:pt-3 md:pt-4 text-xs sm:text-sm md:text-base text-center">
+        <div className="w-full mt-3 sm:mt-4 md:mt-5 lg:mt-6 text-gray-500 border-t-2 border-gray-800 pt-3 sm:pt-4 md:pt-5 lg:pt-6 text-xs sm:text-sm md:text-base lg:text-base text-center">
           © 2025 - All Rights Reserved | Created By Phoungvisal
         </div>
       </div>

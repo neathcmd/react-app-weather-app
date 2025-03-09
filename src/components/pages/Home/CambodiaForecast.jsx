@@ -196,7 +196,7 @@ const CambodiaForecast = () => {
   };
 
   return (
-    <section className="py-6 sm:py-8 md:py-12 lg:py-16 mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-6 sm:py-8 md:py-12 lg:py-16 container mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-10">
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
           Cambodia Forecast
@@ -207,8 +207,8 @@ const CambodiaForecast = () => {
         </p>
       </div>
 
-      {/* Grid layout for province cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto cursor-pointer">
+      {/* Grid layout for province cards, centered */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 lg:gap-8 justify-items-center max-w-6xl mx-auto">
         {provinces.map((province, index) => (
           <ProvinceCard key={index} province={province} />
         ))}
