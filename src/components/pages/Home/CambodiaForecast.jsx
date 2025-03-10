@@ -170,7 +170,10 @@ const CambodiaForecast = () => {
   // ProvinceCard Component
   const ProvinceCard = ({ province }) => {
     return (
-      <div className="bg-gray-100 rounded-lg p-3 sm:p-4 md:p-5 flex flex-col items-center justify-between shadow-sm hover:shadow-md transition-shadow duration-300 w-full max-w-[220px] sm:max-w-[240px] h-[180px] sm:h-[200px] md:h-[220px]">
+      <div
+        data-aos="zoom-in-up"
+        className="bg-gray-100 rounded-lg p-3 sm:p-4 md:p-5 flex flex-col items-center justify-between shadow-sm hover:shadow-md transition-shadow duration-300 w-full max-w-[220px] sm:max-w-[240px] h-[180px] sm:h-[200px] md:h-[220px]"
+      >
         <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center mb-1 sm:mb-2 md:mb-3">
           <img
             src={province.image}
@@ -198,10 +201,16 @@ const CambodiaForecast = () => {
   return (
     <section className="py-6 sm:py-8 md:py-12 lg:py-16 container mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-10">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
+        <h2
+          data-aos="fade-down"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2"
+        >
           Cambodia Forecast
         </h2>
-        <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+        <p
+          data-aos="fade-up"
+          className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto"
+        >
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout.
         </p>
