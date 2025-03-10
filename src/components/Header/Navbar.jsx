@@ -139,14 +139,14 @@ const NavBar = () => {
           </button>
 
           {/* Menu Content */}
-          <div className="mt-16 p-6 flex flex-col space-y-4">
+          <div className="mt-16 p-6 flex flex-col space-y-4 bg-[#EE7C27]">
             <div className="flex items-center gap-4 justify-center flex-col">
               <a href="/">
                 <span className="text-white">⚡</span>
               </a>
               <a
                 href="/"
-                className="relative font-bold text-lg lg:text-base tracking-wide hover:text-black transition-colors duration-300 ease-in-out after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
+                className="relative font-bold text-lg lg:text-base tracking-wide transition-colors duration-300 ease-in-out after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
               >
                 Weather Cambodia
               </a>

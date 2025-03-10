@@ -222,35 +222,41 @@ const WeatherOverview = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       {/* Header Section */}
       <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-        <h1 className="text-2xl sm:text-3xl font-bold text-black">
+        <h1
+          data-aos="fade-down"
+          className="text-2xl sm:text-3xl font-bold text-black"
+        >
           Weather Dashboard
         </h1>
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
           {/* Search Input and Button */}
           <div className="relative w-full sm:w-auto group">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-gray-400 group-hover:text-orange-500 transition-colors duration-3000"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
+            <div data-aos="fade-right">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-gray-400 group-hover:text-orange-500 transition-colors duration-3000"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="Search city..."
+                className="pl-10 pr-4 py-2 w-full sm:w-64 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300 text-black text-sm sm:text-base placeholder-gray-400 hover:border-orange-400"
+                onKeyPress={handleCityChange}
+              />
             </div>
-            <input
-              type="text"
-              placeholder="Search city..."
-              className="pl-10 pr-4 py-2 w-full sm:w-64 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300 text-black text-sm sm:text-base placeholder-gray-400 hover:border-orange-400"
-              onKeyPress={handleCityChange}
-            />
             <button
+              data-aos="fade-left"
               className="absolute right-0 top-0 h-full px-3 sm:px-4 bg-orange-500 text-white rounded-r-lg hover:bg-orange-600 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:ring-offset-1 cursor-pointer"
               onClick={() => {
                 const inputValue = document.querySelector("input").value;
@@ -263,6 +269,7 @@ const WeatherOverview = () => {
 
           {/* Unit Toggle Button */}
           <button
+            data-aos="zoom-in"
             className="w-full sm:w-auto px-3 sm:px-4 py-2 bg-gray-100 text-gray-800 rounded-lg shadow-sm hover:bg-gray-200 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-1 text-sm sm:text-base"
             onClick={toggleUnits}
           >
@@ -274,17 +281,27 @@ const WeatherOverview = () => {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Weather Card */}
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl p-4 sm:p-6 shadow-xl">
+        <div
+          data-aos="zoom-in"
+          className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl p-4 sm:p-6 shadow-xl"
+        >
           <div className="flex justify-between items-center mb-4">
             <div>
-              <h2 className="font-bold text-xl sm:text-2xl">
+              <h2
+                data-aos="fade-right"
+                className="font-bold text-xl sm:text-2xl"
+              >
                 {cityName}, {countryCode}
               </h2>
-              <p className="text-gray-300 text-sm sm:text-base">
+              <p
+                data-aos="fade-up"
+                className="text-gray-300 text-sm sm:text-base"
+              >
                 {formatDateTime()}
               </p>
             </div>
             <img
+              data-aos="fade-left"
               src={getWeatherIcon(weatherIcon)}
               alt={weatherDescription}
               className="w-12 h-12 sm:w-16 sm:h-16 "
@@ -293,15 +310,25 @@ const WeatherOverview = () => {
 
           <div className="my-4 sm:my-6 text-center">
             <div className="flex items-center justify-center">
-              <span className="text-5xl sm:text-7xl font-bold">
+              <span
+                data-aos="zoom-in"
+                className="text-5xl sm:text-7xl font-bold"
+              >
                 {temperature}
                 {tempUnit}
               </span>
             </div>
-            <p className="text-lg sm:text-xl capitalize mt-2">
+            <p
+              data-aos="zoom-in-up"
+              className="text-lg sm:text-xl capitalize mt-2"
+            >
               {weatherDescription}
             </p>
-            <p className="text-gray-300 mt-1 text-sm sm:text-base">
+            <p
+              data-aos="zoom-in-up"
+              data-aos-delay="200"
+              className="text-gray-300 mt-1 text-sm sm:text-base"
+            >
               Feels like {feelsLike}
               {tempUnit}
             </p>
@@ -309,7 +336,7 @@ const WeatherOverview = () => {
 
           <div className="border-t border-gray-700 pt-4">
             <div className="grid grid-cols-2 gap-4">
-              <div className="flex items-center">
+              <div data-aos="fade-right" className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-orange-400"
@@ -332,7 +359,7 @@ const WeatherOverview = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center">
+              <div data-aos="fade-left" className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-blue-400"
@@ -360,7 +387,11 @@ const WeatherOverview = () => {
 
           <div className="mt-4 pt-4 border-t border-gray-700">
             <div className="grid grid-cols-2 gap-4">
-              <div className="flex items-center">
+              <div
+                data-aos="fade-right"
+                data-aos-delay="200"
+                className="flex items-center"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-blue-400"
@@ -380,7 +411,11 @@ const WeatherOverview = () => {
                   <p className="text-sm sm:text-base">{sunrise}</p>
                 </div>
               </div>
-              <div className="flex items-center">
+              <div
+                data-aos="fade-left"
+                data-aos-delay="200"
+                className="flex items-center"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-orange-400"
@@ -408,11 +443,20 @@ const WeatherOverview = () => {
         {/* Forecast and Details Section */}
         <div className="lg:col-span-2">
           {/* 5-Day Forecast */}
-          <div className="bg-[#DBD0D0] rounded-xl shadow-lg p-4 sm:p-6 mb-6">
-            <h3 className="font-semibold text-base sm:text-lg text-gray-800 mb-4">
+          <div
+            data-aos="zoom-in"
+            className="bg-[#DBD0D0] rounded-xl shadow-lg p-4 sm:p-6 mb-6"
+          >
+            <h3
+              data-aos="fade-down"
+              className="font-semibold text-base sm:text-lg text-gray-800 mb-4"
+            >
               5-Day Forecast
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4 ">
+            <div
+              data-aos="fade-up"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4 "
+            >
               {dailyForecasts.map((day, index) => (
                 <div
                   key={index}
@@ -441,8 +485,14 @@ const WeatherOverview = () => {
 
           {/* Weather Details Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-orange-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
+            <div
+              data-aos="zoom-in"
+              className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center"
+            >
+              <div
+                data-aos="fade-right"
+                className="bg-orange-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500"
@@ -459,15 +509,29 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-xs sm:text-sm">Air Quality</p>
-                <p className="font-semibold text-gray-800 text-sm sm:text-base">
+                <p
+                  data-aos="fade-down"
+                  className="text-gray-500 text-xs sm:text-sm"
+                >
+                  Air Quality
+                </p>
+                <p
+                  data-aos="fade-up"
+                  className="font-semibold text-gray-800 text-sm sm:text-base"
+                >
                   {airQualityText}
                 </p>
               </div>
             </div>
 
-            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-blue-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
+            <div
+              data-aos="zoom-in"
+              className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center"
+            >
+              <div
+                data-aos="fade-right"
+                className="bg-blue-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 sm:h-6 sm:w-6 text-blue-500"
@@ -484,15 +548,29 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-xs sm:text-sm">Humidity</p>
-                <p className="font-semibold text-gray-800 text-sm sm:text-base">
+                <p
+                  data-aos="fade-down"
+                  className="text-gray-500 text-xs sm:text-sm"
+                >
+                  Humidity
+                </p>
+                <p
+                  data-aos="fade-up"
+                  className="font-semibold text-gray-800 text-sm sm:text-base"
+                >
                   {humidity}%
                 </p>
               </div>
             </div>
 
-            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-green-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
+            <div
+              data-aos="zoom-in"
+              className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center"
+            >
+              <div
+                data-aos="fade-right"
+                className="bg-green-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 sm:h-6 sm:w-6 text-green-500"
@@ -509,15 +587,29 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-xs sm:text-sm">Wind</p>
-                <p className="font-semibold text-gray-800 text-sm sm:text-base">
+                <p
+                  data-aos="fade-down"
+                  className="text-gray-500 text-xs sm:text-sm"
+                >
+                  Wind
+                </p>
+                <p
+                  data-aos="fade-up"
+                  className="font-semibold text-gray-800 text-sm sm:text-base"
+                >
                   {windSpeed} {windUnit}
                 </p>
               </div>
             </div>
 
-            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-purple-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
+            <div
+              data-aos="zoom-in"
+              className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center"
+            >
+              <div
+                data-aos="fade-right"
+                className="bg-purple-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 sm:h-6 sm:w-6 text-purple-500"
@@ -534,15 +626,29 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-xs sm:text-sm">Pressure</p>
-                <p className="font-semibold text-gray-800 text-sm sm:text-base">
+                <p
+                  data-aos="fade-down"
+                  className="text-gray-500 text-xs sm:text-sm"
+                >
+                  Pressure
+                </p>
+                <p
+                  data-aos="fade-up"
+                  className="font-semibold text-gray-800 text-sm sm:text-base"
+                >
                   {pressure} hPa
                 </p>
               </div>
             </div>
 
-            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-yellow-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
+            <div
+              data-aos="zoom-in"
+              className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center"
+            >
+              <div
+                data-aos="fade-right"
+                className="bg-yellow-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-500"
@@ -565,15 +671,29 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-xs sm:text-sm">Visibility</p>
-                <p className="font-semibold text-gray-800 text-sm sm:text-base">
+                <p
+                  data-aos="fade-down"
+                  className="text-gray-500 text-xs sm:text-sm"
+                >
+                  Visibility
+                </p>
+                <p
+                  data-aos="fade-up"
+                  className="font-semibold text-gray-800 text-sm sm:text-base"
+                >
                   {visibility.toFixed(1)} {visibilityUnit}
                 </p>
               </div>
             </div>
 
-            <div className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center">
-              <div className="bg-red-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
+            <div
+              data-aos="zoom-in"
+              className="bg-[#DBD0D0] rounded-xl shadow-md p-4 flex items-center"
+            >
+              <div
+                data-aos="fade-right"
+                className="bg-red-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 sm:h-6 sm:w-6 text-red-500"
@@ -590,8 +710,16 @@ const WeatherOverview = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-500 text-xs sm:text-sm">Feels Like</p>
-                <p className="font-semibold text-gray-800 text-sm sm:text-base">
+                <p
+                  data-aos="fade-down"
+                  className="text-gray-500 text-xs sm:text-sm"
+                >
+                  Feels Like
+                </p>
+                <p
+                  data-aos="fade-up"
+                  className="font-semibold text-gray-800 text-sm sm:text-base"
+                >
                   {feelsLike}
                   {tempUnit}
                 </p>

@@ -88,7 +88,10 @@ const Hero = () => {
         </div>
 
         {/* Weather Card (Right Side) */}
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl p-4 sm:p-6 md:p-8 shadow-xl w-full max-w-sm sm:max-w-md md:max-w-lg">
+        <div
+          data-aos="fade-left"
+          className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl p-4 sm:p-6 md:p-8 shadow-xl w-full max-w-sm sm:max-w-md md:max-w-lg"
+        >
           {loading ? (
             <p className="text-center">Loading weather...</p>
           ) : weatherData ? (

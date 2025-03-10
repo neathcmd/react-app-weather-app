@@ -10,8 +10,8 @@ function App() {
   // Initialize AOS when the component mounts
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration in milliseconds
-      once: true, // Whether animation should happen only once
+      duration: 1000,
+      once: true,
     });
   }, []);
   return (
