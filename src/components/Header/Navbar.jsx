@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // Define your navigation links as a separate array object
 const navigationLinks = [
   { name: "Home", path: "/" },
-  { name: "About Us", path: "#about-us" },
+  { name: "About Us", path: "/about" },
   { name: "Gallery", path: "/gallery" },
   { name: "Blog", path: "/blog" },
   { name: "FAQ", path: "/faq" },
@@ -46,27 +47,27 @@ const NavBar = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           {/* Logo and Brand Name */}
           <div className="flex items-center gap-4">
-            <a href="/">
+            <Link to="/">
               <span className="text-white">⚡</span>
-            </a>
-            <a
-              href="/"
+            </Link>
+            <Link
+              to="/"
               className="relative font-bold text-lg lg:text-base tracking-wide hover:text-black transition-colors duration-300 ease-in-out after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
             >
               Weather Cambodia
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex space-x-6 lg:space-x-8">
             {navigationLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.path}
+                to={link.path}
                 className="relative text-sm lg:text-base font-medium hover:text-black transition-colors duration-300 ease-in-out after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -141,20 +142,20 @@ const NavBar = () => {
           {/* Menu Content */}
           <div className="mt-16 p-6 flex flex-col space-y-4 bg-[#EE7C27]">
             <div className="flex items-center gap-4 justify-center flex-col">
-              <a href="/">
+              <Link to="/">
                 <span className="text-white">⚡</span>
-              </a>
-              <a
-                href="/"
+              </Link>
+              <Link
+                to="/"
                 className="relative font-bold text-lg lg:text-base tracking-wide transition-colors duration-300 ease-in-out after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full"
               >
                 Weather Cambodia
-              </a>
+              </Link>
             </div>
             {navigationLinks.map((link, index) => (
-              <a
+              <Link
                 key={index}
-                href={link.path}
+                to={link.path}
                 onClick={(e) => handleLinkClick(e, link.path)}
                 className={`block px-4 py-3 text-lg transition-all relative lg:text-base font-medium transition-colors duration-300 ease-in-out after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full ${
                   isMenuOpen
@@ -166,7 +167,7 @@ const NavBar = () => {
                 }}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <a
               href="#get-info"

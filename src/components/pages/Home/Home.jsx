@@ -1,4 +1,3 @@
-// src/components/pages/Home/Home.jsx
 import React from "react";
 import Hero from "./Hero";
 import AboutSection from "./About";
